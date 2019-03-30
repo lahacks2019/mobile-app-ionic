@@ -17,9 +17,14 @@
       Before we start,<br>
       we'd like to ask you a few questions.
       <br><br>
-      Which one describes you more?
+      Which one describes you best?
     </p>
-    <ion-card color="light" class="role-card">
+    <ion-card
+      (click)="signup('individual')"
+      color="light"
+      class="role-card"
+      [class.inactive-card]="role === 'restaurant'"
+    >
       <ion-card-content>
         <div class="role-pic">
           <img src="assets/maid.png">
@@ -27,7 +32,12 @@
         <div class="role-name"><h1>Individual</h1></div>
       </ion-card-content>
     </ion-card>
-    <ion-card color="light" class="role-card">
+    <ion-card
+      (click)="signup('restaurant')"
+      color="light"
+      class="role-card"
+      [class.inactive-card]="role === 'individual'"
+    >
       <ion-card-content>
         <div class="role-pic">
           <img src="assets/chef.png">

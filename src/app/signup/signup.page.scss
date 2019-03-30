@@ -1,0 +1,60 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+  margin: 0 16px;
+
+  h1, p {
+    text-align: center;
+  }
+}
+
+.user-card {
+  margin-bottom: 0px;
+}
+
+.role-card {
+  width: 100%;
+  margin: 0 16px;
+
+  ion-card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .role-pic, .role-name {
+    flex: 1;
+  }
+}
+
+.inactive-card {
+  opacity: 0.5;
+}
+
+ion-button {
+  width: 100%;
+}
+
+.small-warning {
+  font-size: 12px;
+}
+
+form {
+  width: 100%;
+
+  .form-row {
+    display: flex;
+    flex-direction: row;
+
+    * {
+      flex: 1;
+    }
+  }
+}
+
+ion-card {
+  margin: 24px 0;
+}

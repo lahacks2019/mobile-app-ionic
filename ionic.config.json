@@ -1,0 +1,7 @@
+{
+  "name": "lahacks",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

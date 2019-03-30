@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonContent } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-signup',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  @ViewChild('myContent') content: IonContent;
   role: string;
 
   constructor() { }
@@ -13,8 +16,9 @@ export class SignupPage implements OnInit {
   ngOnInit() {
   }
 
-  signup(role: string) {
+  chooseRole(role: string) {
     this.role = role;
+    setTimeout(() => this.content.scrollToBottom(1000), 100);
   }
 
 }

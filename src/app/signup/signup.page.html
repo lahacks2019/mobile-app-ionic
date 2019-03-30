@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content #myContent>
   <div class="content">
     <h1>
       Welcome,<br>
@@ -20,7 +20,7 @@
       Which one describes you best?
     </p>
     <ion-card
-      (click)="signup('individual')"
+      (click)="chooseRole('individual')"
       color="light"
       class="role-card"
       [class.inactive-card]="role === 'restaurant'"
@@ -33,7 +33,7 @@
       </ion-card-content>
     </ion-card>
     <ion-card
-      (click)="signup('restaurant')"
+      (click)="chooseRole('restaurant')"
       color="light"
       class="role-card"
       [class.inactive-card]="role === 'individual'"
@@ -45,5 +45,37 @@
         <div class="role-name"><h1>Restaurant<br>Owner</h1></div>
       </ion-card-content>
     </ion-card>
+  </div>
+  <div *ngIf="role === 'individual'" class="content">
+    <p>
+      Cool!<br>
+      Can you give us your location to make<br>
+      things easier for you?
+    </p>
+    <p class="small-warning">
+      We will never share your precise location to other users.
+    </p>
+    <ion-button
+      (click)="signup()"
+      color="primary"
+      expand="block"
+      fill="solid"
+    >
+      Finish
+    </ion-button>
+  </div>
+  <div *ngIf="role === 'restaurant'" class="content">
+    <p>
+      Awesome!<br>
+      Tell us more about your restaurant!
+    </p>
+    <ion-button
+      (click)="signup()"
+      color="primary"
+      expand="block"
+      fill="solid"
+    >
+      Finish
+    </ion-button>
   </div>
 </ion-content>

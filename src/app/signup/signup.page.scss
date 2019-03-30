@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 100%;
+  height: 100vh;
   margin: 0 16px;
 
   h1, p {
@@ -32,4 +32,12 @@
 
 .inactive-card {
   opacity: 0.5;
+}
+
+ion-button {
+  width: 100%;
+}
+
+.small-warning {
+  font-size: 12px;
 }

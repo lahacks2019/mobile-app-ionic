@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IonContent } from '@ionic/angular';
 
 
@@ -10,6 +11,14 @@ import { IonContent } from '@ionic/angular';
 export class SignupPage implements OnInit {
   @ViewChild('myContent') content: IonContent;
   role: string;
+  restaurantForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
+    state: new FormControl('', Validators.required),
+    zipcode: new FormControl('', Validators.required),
+    description: new FormControl('')
+  });
 
   constructor() { }
 

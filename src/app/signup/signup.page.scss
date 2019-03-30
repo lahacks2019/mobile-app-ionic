@@ -41,3 +41,20 @@ ion-button {
 .small-warning {
   font-size: 12px;
 }
+
+form {
+  width: 100%;
+
+  .form-row {
+    display: flex;
+    flex-direction: row;
+
+    * {
+      flex: 1;
+    }
+  }
+}
+
+ion-card {
+  margin: 24px 0;
+}

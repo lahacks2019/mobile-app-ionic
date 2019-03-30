@@ -69,8 +69,41 @@
       Awesome!<br>
       Tell us more about your restaurant!
     </p>
+    <ion-card color="light">
+      <ion-card-content>
+        <form [formGroup]="restaurantForm">
+          <ion-item color="light">
+            <ion-label position="stacked">Restaurant Name</ion-label>
+            <ion-input formControlName="name" placeholder="My Awesome Restaurant" required></ion-input>
+          </ion-item>
+          <ion-item color="light">
+            <ion-label position="stacked">Address</ion-label>
+            <ion-input formControlName="address" placeholder="123 My Rd" required></ion-input>
+          </ion-item>
+          <ion-item color="light">
+            <ion-label position="stacked">City</ion-label>
+            <ion-input formControlName="city" placeholder="My City" required></ion-input>
+          </ion-item>
+          <div class="form-row">
+            <ion-item color="light">
+              <ion-label position="stacked">State</ion-label>
+              <ion-input formControlName="state" placeholder="CA" required></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-label position="stacked">Zipcode</ion-label>
+              <ion-input formControlName="zipcode" placeholder="123456" required></ion-input>
+            </ion-item>
+          </div>
+          <ion-item color="light">
+            <ion-label position="stacked">Description</ion-label>
+            <ion-textarea formControlName="description" placeholder="It's a cozy restaurant by the main street..." rows="5"></ion-textarea>
+          </ion-item>
+        </form>
+      </ion-card-content>
+    </ion-card>
     <ion-button
       (click)="signup()"
+      [disabled]="restaurantForm.invalid"
       color="primary"
       expand="block"
       fill="solid"

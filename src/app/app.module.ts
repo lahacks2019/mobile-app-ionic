@@ -17,7 +17,9 @@ import { Facebook } from '@ionic-native/facebook/ngx';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      mode: 'ios'
+    }),
     AppRoutingModule
   ],
   providers: [

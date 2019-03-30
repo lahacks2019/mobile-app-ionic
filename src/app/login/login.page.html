@@ -4,14 +4,60 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content>
-  <h1>AppName</h1>
-  <ion-button
-    (click)="login()"
-    color="primary"
-    expand="block"
-    fill="solid"
-  >
-    Continue with Facebook
-  </ion-button>
+<ion-content color="secondary">
+  <div class="container">
+    <h1 class="card-hearder">AppName</h1>
+    <ion-slides pager="true" [options]="slideOpts" class="slides">
+      <ion-slide>
+        <ion-card color="light" class="card">
+          <div class="card-container">
+            <ion-img src="/assets/give.svg"></ion-img>
+            <ion-card-header>
+              <ion-card-title>Sharing is Caring</ion-card-title>
+              <div class="division"></div>
+            </ion-card-header>
+            <ion-card-content>
+              The quick brown fox jumps over the lazy dog. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </ion-card-content>
+          </div>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card color="light" class="card">
+          <div class="card-container">
+            <ion-img src="/assets/give.svg"></ion-img>
+            <ion-card-header>
+              <ion-card-title>Sharing is Caring</ion-card-title>
+              <div class=""></div>
+            </ion-card-header>
+            <ion-card-content>
+              The quick brown fox jumps over the lazy dog. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </ion-card-content>
+          </div>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card color="light" class="card">
+          <div class="card-container">
+            <ion-img src="/assets/give.svg"></ion-img>
+            <ion-card-header>
+              <ion-card-title>Sharing is Caring</ion-card-title>
+              <div class=""></div>
+            </ion-card-header>
+            <ion-card-content>
+              The quick brown fox jumps over the lazy dog. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </ion-card-content>
+          </div>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+    <ion-button
+      (click)="login()"
+      color="primary"
+      expand="block"
+      fill="solid"
+    >
+      Continue with Facebook
+    </ion-button>
+  </div>
 </ion-content>

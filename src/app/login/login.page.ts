@@ -8,7 +8,10 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  slideOpts = {
+    effect: 'flip',
+    spaceBetween: 10,
+  };
   constructor(private http: HttpClient, private fb: Facebook) { }
 
   ngOnInit() {

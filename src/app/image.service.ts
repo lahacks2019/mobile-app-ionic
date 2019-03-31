@@ -17,7 +17,7 @@ export class ImageService {
   uploadImage(image: string) {
     return new Promise((resolve, reject) => {
       const userID = this.userService.user.id;
-      this.http.post('https://lahacks-236121.appspot.com/uploadImage', {
+      this.http.post('https://cors-anywhere.herokuapp.com/https://lahacks-236121.appspot.com/uploadImage', {
         userID: userID,
         image: image
       }).toPromise()

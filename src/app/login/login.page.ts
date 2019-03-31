@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { LoadingController } from '@ionic/angular';
+import { PopupService } from '../popup.service';
 
 @Component({
   selector: 'app-login',
@@ -15,22 +17,32 @@ export class LoginPage implements OnInit {
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private loadingCtrl: LoadingController,
+    private userService: UserService,
+    private popupService: PopupService
   ) { }
 
   ngOnInit() {
   }
 
-  login() {
-    this.userService.login()
-    .then((isExistingUser: boolean) => {
+  async login() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Logging in...'
+    });
+    loading.present();
+    try {
+      const isExistingUser = await this.userService.login();
+      loading.dismiss();
       if (isExistingUser) {
         this.router.navigate(['dashboard']);
       } else {
         this.router.navigate(['signup']);
       }
-    })
-    .catch(err => console.error(err));
+    } catch (e) {
+      loading.dismiss();
+      console.error(e);
+      this.popupService.alert(JSON.stringify(e));
+    }
   }
 
 }

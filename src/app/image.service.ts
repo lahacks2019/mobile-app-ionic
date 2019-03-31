@@ -2,12 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 
+export interface VisionResult {
+  isFood: boolean;
+  tags: string[];
+  guess: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
   image: string;
-  lastResult: string;
+  results: string[];
+  guess: string;
 
   constructor(
     private http: HttpClient,
@@ -21,9 +28,15 @@ export class ImageService {
         userID: userID,
         image: image
       }).toPromise()
-      .then((result: string) => {
-        this.lastResult = result;
-        resolve(result);
+      .then((result: VisionResult) => {
+        if (result.isFood) {
+          this.image = image;
+          this.results = result.tags;
+          this.guess = result.guess.split(' ')[0] || '';
+          resolve(result);
+        } else {
+          throw new Error('This is not a picture of food!');
+        }
       })
       .catch(err => reject(err));
     });

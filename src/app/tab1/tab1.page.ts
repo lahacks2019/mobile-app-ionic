@@ -8,37 +8,24 @@ import { Item } from '../../interfaces/_interfaces';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-  postData = [];
-  data = [
-    {
-    username: 'User Name',
-    avatar: '/assets/shapes.svg',
-    foodPicture: '/assets/shapes.svg',
-    datePosted: '10 mins ago',
-    location:  '1 mile away'
-    },
-    {
-      username: 'User Name',
-      avatar: '/assets/shapes.svg',
-      foodPicture: '/assets/shapes.svg',
-      datePosted: '10 mins ago',
-      location:  '1 mile away'
-    },
-    {
-      username: 'User Name',
-      avatar: '/assets/shapes.svg',
-      foodPicture: '/assets/shapes.svg',
-      datePosted: '10 mins ago',
-      location:  '1 mile away'
-    }
-  ];
-  constructor(private dataService: DataService){}
+  postData: Item[] = [];
 
-  ngOnInit(){
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
     this.dataService.getItems()
     .then(response =>  {
       console.log(response);
       this.postData = response;
-    })
+    });
+  }
+
+  doRefresh(event: any) {
+    this.dataService.getItems()
+    .then(response =>  {
+      console.log(response);
+      this.postData = response;
+      event.target.complete();
+    });
   }
 }

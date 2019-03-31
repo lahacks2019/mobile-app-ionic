@@ -38,11 +38,15 @@ export class TabsPage {
       }, 15000);
       await this.imageService.uploadImage('data:image/jpeg;base64,' + image);
       loading.dismiss();
-      this.router.navigate(['tab2']);
+      this.router.navigate(['dashboard', 'tab2']);
     } catch (e) {
       loading.dismiss();
       console.error(e);
-      this.popupService.alert(JSON.stringify(e));
+      if (e instanceof Error) {
+        this.popupService.alert(e.message);
+      } else {
+        this.popupService.alert(JSON.stringify(e));
+      }
     }
   }
 }

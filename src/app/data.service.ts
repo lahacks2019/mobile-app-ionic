@@ -13,7 +13,7 @@ export class DataService {
 
   async getItems(): Promise<Item[]> {
     const { data } = await this.apollo.query<{ items: Item[] }>({
-      query: `query {
+      query: gql`query {
         items {
           id,
           name

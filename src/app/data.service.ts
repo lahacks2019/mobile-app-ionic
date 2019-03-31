@@ -20,7 +20,7 @@ export class DataService {
           expireDate,
           userID,
           imageURL,
-          location,
+          location
         }
       }`
     }).toPromise();

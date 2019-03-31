@@ -1,7 +1,7 @@
 export interface User {
   id: string;
   email: string;
-  pictureUrl: string;
+  pictureURL: string;
   fbID: string;
   identity?: 'individual' | 'restaurant';
   defaultLocation?: string;

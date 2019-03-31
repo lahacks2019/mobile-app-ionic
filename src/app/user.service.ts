@@ -49,7 +49,7 @@ export class UserService {
             id,
             email,
             fbID: name,
-            pictureUrl: picture.data.url
+            pictureURL: picture.data.url
           };
           return this.dataService.getUser(this.user.id);
         })
@@ -69,7 +69,7 @@ export class UserService {
           id: '1234567890',
           email: 'john@smith.com',
           fbID: 'John Smith',
-          pictureUrl: 'http://i.pravatar.cc/100'
+          pictureURL: 'http://i.pravatar.cc/100'
         };
         resolve(false);
       }

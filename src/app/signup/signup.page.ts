@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +20,7 @@ export class SignupPage implements OnInit {
     description: new FormControl('')
   });
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -28,6 +28,10 @@ export class SignupPage implements OnInit {
   chooseRole(role: string) {
     this.role = role;
     setTimeout(() => this.content.scrollToBottom(1000), 100);
+  }
+
+  signup() {
+    this.router.navigate(['dashboard']);
   }
 
 }

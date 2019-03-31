@@ -27,12 +27,54 @@ export class DataService {
     return data.items;
   }
 
+  async createItem(item: Item) {
+    const { data } = await this.apollo.mutate<{ item: Item }>({
+      mutation: gql`
+      mutation CreateItem(
+        $id: String!,
+        $name: String!,
+        $imageURL: String!,
+        $userID:String!,
+        $description:String!,
+        $location:String!,
+        $expireDate:String!
+      ) {
+        addItem(
+          id: $id,
+          name: $name,
+          imageURL: $imageURL,
+          userID: $userID,
+          description: $description,
+          location:$location,
+          expireDate : $expireDate
+        ) {
+          id
+          name
+          expireDate
+          imageURL
+          userID
+          description
+          location
+        }
+      }`,
+      variables: item
+    }).toPromise();
+    return data.item;
+  }
+
   async getUser(id: string): Promise<User> {
     const { data } = await this.apollo.query<{ user: User }>({
       query: gql`query {
         user(id:"${id}") {
-          id,
+          id
           email
+          pictureUrl
+          fbID
+          identity
+          defaultLocation
+          rating
+          reviews
+          benefits
         }
       }`
     }).toPromise();

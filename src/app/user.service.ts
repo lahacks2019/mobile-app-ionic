@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Platform } from '@ionic/angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { DataService } from './data.service';
 import { User } from '../interfaces/_interfaces';
 
 export interface FbUser {
@@ -27,7 +28,8 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private platform: Platform,
-    private fb: Facebook
+    private fb: Facebook,
+    private dataService: DataService
   ) { }
 
   login(): Promise<boolean> {
@@ -49,10 +51,26 @@ export class UserService {
             fbID: name,
             pictureUrl: picture.data.url
           };
-          resolve(false);
+          return this.dataService.getUser(this.user.id);
+        })
+        .then((result: User) => {
+          if (result) {
+            // User exist in our database.
+            this.user = Object.assign(result, this.user);
+            resolve(true);
+          } else {
+            resolve(false);
+          }
         })
         .catch(err => reject(err));
       } else {
+        // Fake test user.
+        this.user = {
+          id: '1234567890',
+          email: 'john@smith.com',
+          fbID: 'John Smith',
+          pictureUrl: 'http://i.pravatar.cc/100'
+        };
         resolve(false);
       }
     });

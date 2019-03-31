@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
-import { Observable } from 'rxjs';
-import { Item } from '../interfaces/_interfaces';
+import { Item, User } from '../interfaces/_interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +20,17 @@ export class DataService {
       }`
     }).toPromise();
     return data.items;
+  }
+
+  async getUser(id: string): Promise<User> {
+    const { data } = await this.apollo.query<{ user: User }>({
+      query: gql`query {
+        user(id:"${id}") {
+          id,
+          email
+        }
+      }`
+    }).toPromise();
+    return data.user;
   }
 }

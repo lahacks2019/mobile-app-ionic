@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
+import { UserService } from '../user.service';
+import { User } from '../../interfaces/_interfaces';
 
 @Component({
   selector: 'app-signup',
@@ -10,6 +12,7 @@ import { IonContent } from '@ionic/angular';
 })
 export class SignupPage implements OnInit {
   @ViewChild('myContent') content: IonContent;
+  user: User;
   role: string;
   restaurantForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -20,9 +23,13 @@ export class SignupPage implements OnInit {
     description: new FormControl('')
   });
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
+    this.user = this.userService.user;
   }
 
   chooseRole(role: string) {

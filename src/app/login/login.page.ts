@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,34 +14,23 @@ export class LoginPage implements OnInit {
   };
 
   constructor(
-    private http: HttpClient,
     private router: Router,
-    private platform: Platform,
-    private fb: Facebook
+    private userService: UserService
   ) { }
 
   ngOnInit() {
   }
 
   login() {
-    if (this.platform.is('cordova')) {
-      this.fb.login(['public_profile', 'email'])
-      .then((res: FacebookLoginResponse) => {
-        console.log('Logged into Facebook!', res);
-        const { accessToken, userID } = res.authResponse;
-        return this.http.get(
-          `https://graph.facebook.com/${userID}?fields=id,name,email,picture&access_token=${accessToken}`
-        )
-        .toPromise();
-      })
-      .then((res: HttpResponse<any>) => {
-        console.log(res);
+    this.userService.login()
+    .then((isExistingUser: boolean) => {
+      if (isExistingUser) {
+        this.router.navigate(['dashboard']);
+      } else {
         this.router.navigate(['signup']);
-      })
-      .catch(e => console.log('Error logging into Facebook', e));
-    } else {
-      this.router.navigate(['signup']);
-    }
+      }
+    })
+    .catch(err => console.error(err));
   }
 
 }

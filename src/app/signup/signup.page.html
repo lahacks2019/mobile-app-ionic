@@ -2,14 +2,16 @@
   <div class="content">
     <h1>
       Welcome,<br>
-      John!
+      {{ user.fbID.split(' ')[0] }}!
     </h1>
     <ion-card color="light" class="user-card">
       <ion-card-content>
-        <div class="avatar"></div>
+        <div class="avatar">
+          <img [src]="user.pictureUrl">
+        </div>
         <div>
-          <span class="name">John Smith</span>
-          <span class="email">john@smith.com</span>
+          <span class="name">{{ user.fbID }}</span>
+          <span class="email">{{ user.email }}</span>
         </div>
       </ion-card-content>
     </ion-card>

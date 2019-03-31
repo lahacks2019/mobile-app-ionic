@@ -1,11 +1,40 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Create a Post
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <img [src]="image">
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label position="stacked">Item Name</ion-label>
+      <ion-input formControlName="name" placeholder="Apple" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-input formControlName="description" placeholder="..." required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Expiry Date</ion-label>
+      <ion-datetime formControlName="expireDate" display-format="YYYY-MM-DD" picker-format="YYYY-MM-DD" placeholder="YYYY-MM-DD"></ion-datetime>
+    </ion-item>
+  </form>
+  <div class="tags-container">
+    <ion-label>Tags</ion-label>
+    <ion-chip *ngFor="let tag of tags" color="primary" outline="true">
+      <ion-label>{{ tag }}</ion-label>
+    </ion-chip>
+  </div>
+  <ion-button
+    (click)="post()"
+    [disabled]="form.invalid"
+    color="success"
+    expand="block"
+    fill="solid"
+  >
+    Post
+  </ion-button>
 </ion-content>

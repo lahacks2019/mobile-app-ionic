@@ -7,6 +7,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { GraphQLModule } from './graphql.module';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Facebook } from '@ionic-native/facebook/ngx';
@@ -20,7 +22,8 @@ import { Facebook } from '@ionic-native/facebook/ngx';
     IonicModule.forRoot({
       mode: 'ios'
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    GraphQLModule
   ],
   providers: [
     StatusBar,

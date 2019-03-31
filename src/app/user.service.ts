@@ -76,7 +76,8 @@ export class UserService {
     });
   }
 
-  signup(additionalInfo: any) {
+  async signup(additionalInfo: any) {
     this.user = Object.assign(this.user, additionalInfo);
+    return await this.dataService.createUser(this.user);
   }
 }

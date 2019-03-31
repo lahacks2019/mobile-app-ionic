@@ -13,16 +13,16 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="post-card" *ngFor="let item of data">
-      <ion-img src={{item.foodPicture}}></ion-img>
+    <ion-card class="post-card" *ngFor="let item of postData">
+      <ion-img src='/assets/shapes.svg'></ion-img>
       <ion-card-content class="card-footer">
         <ion-avatar>
-          <ion-img src={{item.avatar}}></ion-img>
+          <ion-img src='/assets/shapes.svg'></ion-img>
         </ion-avatar>
         <div class="caption-wrapper">
-          <h2>{{item.username}}</h2>
+          <h2>{{item.userID}}</h2>
           <div class="caption-group">
-            <p>{{item.datePosted}}</p>
+            <p>13 mins ago</p>
             <p>{{item.location}}</p>
           </div>
         </div>

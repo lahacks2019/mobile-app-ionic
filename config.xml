@@ -87,4 +87,5 @@
         <variable name="APP_NAME" value="LAhacks19" />
     </plugin>
     <engine name="browser" spec="5.0.4" />
+    <engine name="ios" spec="5.0.0" />
 </widget>

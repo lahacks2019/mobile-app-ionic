@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content></ion-content>
+    <ion-toolbar>
+      <ion-button slot="start" fill="clear">
+        <ion-icon name="menu"></ion-icon>
+      </ion-button>
+      <ion-title>
+        FoodUp
+      </ion-title>
+      <ion-button slot="end" fill="clear">
+        <ion-icon  name="search"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+  
+      <ion-card class="post-card" *ngFor="let item of postData">
+        <ion-img src='/assets/shapes.svg'></ion-img>
+        <ion-card-content class="card-footer">
+          <ion-avatar>
+            <ion-img src='/assets/shapes.svg'></ion-img>
+          </ion-avatar>
+          <div class="caption-wrapper">
+            <h2>{{ item.name }}</h2>
+            <div class="caption-group">
+              <p>13 mins ago</p>
+              <p>{{ item.location }}</p>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+  
+  </ion-content>
+  

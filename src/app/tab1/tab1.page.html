@@ -18,7 +18,7 @@
   </ion-refresher>
 
     <ion-card class="post-card" *ngFor="let item of postData">
-      <ion-img src='/assets/shapes.svg'></ion-img>
+      <ion-img src="{{item.imageURL || '/assets/shapes.svg'}}"></ion-img>
       <ion-card-content class="card-footer">
         <ion-avatar>
           <ion-img src='/assets/shapes.svg'></ion-img>

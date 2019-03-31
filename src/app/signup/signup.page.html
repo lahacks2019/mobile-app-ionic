@@ -54,11 +54,15 @@
       Can you give us your location to make<br>
       things easier for you?
     </p>
+    <div id="map_canvas">
+      <ion-button *ngIf="!permissionGiven" ion-button (click)="onButtonClick()">Give Permission</ion-button>
+    </div>
     <p class="small-warning">
       We will never share your precise location to other users.
     </p>
     <ion-button
       (click)="signup()"
+      [disabled]="!location"
       color="primary"
       expand="block"
       fill="solid"

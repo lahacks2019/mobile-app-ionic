@@ -75,4 +75,8 @@ export class UserService {
       }
     });
   }
+
+  signup(additionalInfo: any) {
+    this.user = Object.assign(this.user, additionalInfo);
+  }
 }
